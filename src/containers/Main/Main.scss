@@ -1,0 +1,11 @@
+// .beer-grid{
+//  display: grid;
+//  grid-template-columns: 300px 300px 300px ;
+//  grid-template-rows: 150px 150px ; 
+//  grid-gap:20px;
+// }
+
+.beer-grid{
+grid-template: 200px/ auto auto auto;
+grid-gap:20px;
+}
