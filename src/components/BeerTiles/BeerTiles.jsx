@@ -4,6 +4,7 @@ import React from 'react'
 
 export const BeerTiles = (props) => {
     const {beerArr}=props;
+
     const beerTilesJSX=beerArr.map((beer)=>(
     //  <div className="beer-grid"> 
         <div className="beer-tiles" key={beer.id}>   

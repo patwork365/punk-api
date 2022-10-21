@@ -2,11 +2,22 @@ import React from 'react'
 import "./App.scss"
 import Nav from "./containers/Nav/Nav"
 import Main from "./containers/Main/Main"
-// import beers from "./data/beers.js"
+
 import { useState } from "react";
 
 const App = () => {
   
+  // const beerz=()=>{
+    
+      
+  //       fetch("https://api.punkapi.com/v2/beers")
+  //       .then(res=>res.json())
+  //       .then (data =>data)
+  //       .catch((error) => console.log(error));
+  //       // setBeers(data);
+  //     }
+  //   beerz();
+
   return (
     <div className="app">
         <div className="app__frame">
