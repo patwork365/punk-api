@@ -7,24 +7,10 @@ import { useState } from "react";
 
 const App = () => {
   
-  // const beerz=()=>{
-    
-      
-  //       fetch("https://api.punkapi.com/v2/beers")
-  //       .then(res=>res.json())
-  //       .then (data =>data)
-  //       .catch((error) => console.log(error));
-  //       // setBeers(data);
-  //     }
-  //   beerz();
-
   return (
     <div className="app">
         <div className="app__frame">
-            {/* <section className="app__frame__nav-side">
-              <Nav />
-            </section> */}
-            <section className="app__frame__main"> Beer List
+           <section className="app__frame-main"> Beer List
              <Main />
             </section>
             

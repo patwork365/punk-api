@@ -3,14 +3,18 @@
     flex-direction: column;
     font-size: 13px;
     align-items: flex-start;
-    margin-left: 5px;
+    margin-left: 15px;
+    margin-top:40px;
+    font-weight: 80px;
+    font-size:30px;
 
 }
 .checkbox__checkbox1,
 .checkbox__checkbox2,
 .checkbox__checkbox3{
-
-        font-size: 13px;
-
-    }
-
+    margin-left: 15px;
+    font-weight: 20px;
+}
+#checkbox__checkbox1{
+    font-size:30px;
+}
