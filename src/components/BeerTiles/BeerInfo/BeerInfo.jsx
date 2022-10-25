@@ -2,11 +2,11 @@ import "./BeerInfo.scss";
 import { useParams } from "react-router-dom";//its a hook in the package
 
 const BeerInfo = (props) => {
-  const {albumId} =useParams() ; // desconstructing and mapping the hook and has to match on app.jsx to the albumID
-  console.log(albumId);
-  const { albumArr } = props;
+  const {beerId} =useParams() ; // desconstructing and mapping the hook and has to match on app.jsx to the albumID
+  console.log(beerId);
+  const { filteredBeers } = props;
 
-  const currentAlbum =albumArr.find((album)=>album.idAlbum===albumId);
+  const currentAlbum =filteredBeers.find((album)=>beer.id===beerId);
   console.log(currentAlbum);   
 //   FIND will return back first object rather than an array, has a callback
 
@@ -16,8 +16,9 @@ const BeerInfo = (props) => {
         <img className="album-info__img album-info__img--first" />
       </div>
       <div className="album-info__content">
-        <h2 className="album-info__heading">ALBUM-TITLE</h2>
-        {/* <h2 className="album-info__heading">{currentAlbum.strAlbum}</h2> */}
+        <h2 className="album-info__heading">BEER-TITLE</h2>
+        {/* //--getdetails of album clicked
+        <h2 className="album-info__heading">{currentAlbum.strAlbum}</h2> */}
         <p>ALBUM-TEXT</p>
         <h2 className="album-info__heading">Facts</h2>
         <ul className="album-info__facts">

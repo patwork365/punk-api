@@ -1,10 +1,9 @@
-// AlbumInfo.scss
-@use "../../assets/sass/variables" as *;
+
 
 .album-info {
   &__banner {
     overflow: hidden;
-    background-color: $color-black;
+    background-color: black;
     height: 35vh;
     position: relative;
   }
@@ -43,7 +42,7 @@
       display: block;
       height: 5px;
       width: 100%;
-      background-color: $color-primary;
+      background-color: #5dadb0;
       border-radius: 15px;
     }
   }

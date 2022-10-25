@@ -3,13 +3,19 @@
   margin:0;
   box-sizing: border-box;
   background-color:antiquewhite;
+ 
   
+}
+.header{
+  text-align: center;
+  text-shadow: 3px;
+  text-decoration: wavy;
 }
 .app__frame-main{
   text-align: center;
   height: max-content;
   width:max-content;
-  border: 2px solid black;
+  // border: 2px solid black;
 }
 
 .app__frame{

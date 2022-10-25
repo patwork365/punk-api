@@ -15,13 +15,15 @@ const Main = (props) => {
   // const [beers, setBeers] = useState(beerz);
   const [searchTerm, setSearchTerm] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [label,setLabel]=useState("");
-  // const labelVal=["avb","brew","ph"]
-  const chkVal=2;
-  // const categories = ["avb","brew","ph"]
-  // const [checkedCategories, setCheckedCategories] = useState([]);
+  const initFilterArr = [
+    {id: 1, text: "High ABV (>6/0%)", checked: false},
+    {id: 2, text: "Classic Range", checked: false},
+    {id: 3, text: "Acidic (ph < 4)", checked: false}
+  ];
+   const [filterArr, updateFilterArr] = useState(initFilterArr);
+
   
-    fetch(`https://api.punkapi.com/v2/beers?page=1&per_page=20`)
+    fetch(`https://api.punkapi.com/v2/beers?page=1&per_page=40`)
       .then((response) => response.json())
       .then((json) => {
         setBeers(json);
@@ -31,73 +33,50 @@ const Main = (props) => {
       //    setBeers(beers);
       //     // setPageCount(Math.ceil(beerData.length /20));
       //   }, [beers]);
-
-
-          const handleToggle=(event)=> {
-           setToggle(!toggle)
-           setLabel(event.target.value)
-           console.log(label)
-         }
-        
+       
+      const toggleCheckedFilter = (filterId) => {
+           const updatedFilterArr = filterArr.map((filter) => {
+            if (filterId===filter.id){
+              return {...filter, checked: !filter.checked}
+            }else{
+              return {...filter}
+            }})
+           updateFilterArr (updatedFilterArr)
+           }
+    
+         
          const handleInput=(event)=> {
-          console.log(event.target.value)
           setSearchTerm(event.target.value.toLowerCase())
         }   
-        const handleChange=(event)=> {
-          console.log(event.target.value)
-          setLabel(event.target.value.toLowerCase())
-        }  
-
-    
-      
+       
         const filteredArr = beers.filter((beer) =>{
-        if(chkVal===2) {
-          const yearChk = beer.first_brewed.substring(beer.first_brewed.length-4, beer.first_brewed.length); 
-          return yearChk>2010;
-        }})
-      
-        //Not working
-        // const filteredArr = beers.filter((beer) =>{
-        //     if (chkVal==1){
-        //          return beer.abv>6.0
-                 
-        //     }
-        //     else if(chkVal==2) {
-        //         const yearChk = beer.first_brewed.substring(beer.first_brewed.length-4, beer.first_brewed.length); 
-        //         return yearChk>2010;
-                               
-        //     }
-        //     else if(chkVal==3)  {
-        //           return beer.ph<4.0;
-                  
-        //     }}
-        // )    
-
-      
- 
- 
+            if (filterArr[0].checked){
+                 return beer.abv>6.0
+            }
+            })
+       
+       
       const filteredBeers = beers.filter((beer) =>{
            const beersTitleLower = beer.name.toLowerCase();
-           return beersTitleLower.includes(searchTerm);
-        })
-      // )
+           return beersTitleLower.includes(searchTerm)
+             && (filterArr[0].checked ? beer.abv > 6: true )
+             && (filterArr[1].checked ? beer.first_brewed.substr(3,6) < 2010: true )
+             && (filterArr[2].checked ? beer.ph < 4: true )
+         })
 
     if (beers.length<filteredBeers.length ) {
         beers=filteredBeers;
+
     } 
-      // }else if ((beers.length>filteredBeers.length) && (chkVal===1 || chkVal===2||chkVal===3))
-      //  {
-      //  filteredArr=filteredBeers;
-      // }
-    
+     
     return (
       // <Router>
         <div className="app__frame">
             <section className="app__frame__nav-side">
-                    {/* <Nav searchTerm={searchTerm} handleInput={handleInput} categories={categories} addToCheckedCategories={addToCheckedCategories} removeFromCheckedCategories={removeFromCheckedCategories} onChange={handleChange} handleToggle={handleToggle} /> */}
-                <Nav searchTerm={searchTerm} handleInput={handleInput} onChange={handleChange} handleToggle={handleToggle} />
-                    {/* <button visibility={this.state.visibility} handleToggleVisible={this.handleToggleVisible}> Reset</button> */}
-            </section>
+                  <Nav searchTerm={searchTerm} handleInput={handleInput} 
+                    filterArr={filterArr} 
+                    toggleCheckedFilter={toggleCheckedFilter} />
+             </section>
             {/* <Route  */}
             <section className="beer-grid">
                 <BeerTiles beerArr={filteredBeers} />

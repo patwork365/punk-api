@@ -5,17 +5,15 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import "./Nav.scss";
 
 const Nav = (props) => {
-   const { searchTerm, handleInput, handleToggle, handleChange } = props; 
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [toggle, setToggle] = useState(false);
-  // const handleToggle = () => {setToggle(!toggle); };
+   const { searchTerm, handleInput, toggleCheckedFilter, filterArr } = props; 
+
 
   console.log(searchTerm);
 
   return (
     <div >
       <SearchBox searchTerm={searchTerm} handleInput={handleInput} />
-      <NavCheckbox setToggle={handleToggle} handleChange={handleChange}/>
+      <NavCheckbox toggleCheckedFilter={toggleCheckedFilter} filterArr={filterArr}/>
       
 
     </div>

@@ -14,25 +14,29 @@ import "./NavCheckbox.scss"
 //      //other function to call here
 //   }
 // }
+const NavCheckbox = ({filterArr,toggleCheckedFilter }) => {
 
-
-const NavCheckbox = ({handleChange,handleToggle }) => {
-
-    
+    console.log(filterArr[0].checked)
   return (
             <div className="checkbox"> 
                  <label value="one" className="checkbox__checkbox1">
-                    <input type="checkbox"  
-                      onChange={handleChange}
-                      handleToggle={true}>
-                      {/* onChange={() => handleChange(checkboxId)}
-                      index={checkboxId}   */}
-                    </input> High AVP( beyond 6.0%)
+                    <input type="checkbox"
+                     checked={filterArr[0].checked}
+                      onChange={(event) => toggleCheckedFilter(filterArr[0].id)}
+                      /> {filterArr[0].text}
                   </label>
                  <label className="checkbox__checkbox2">
-                   <input type="checkbox" ></input > Classic Range{" "}</label>
+                 <input type="checkbox"
+                     checked={filterArr[1].checked}
+                      onChange={(event) => toggleCheckedFilter(filterArr[1].id)}
+                      /> {filterArr[1].text}
+                   
+                   </label>
                  <label className="checkbox__checkbox3">
-                  <input type="checkbox" ></input> Acidic (less 4pH)
+                  <input type="checkbox"
+                   checked={filterArr[2].checked}
+                   onChange={(event) => toggleCheckedFilter(filterArr[2].id)}
+                   /> {filterArr[2].text}
                 </label>
             </div>
   )
@@ -65,3 +69,6 @@ export default NavCheckbox
 //   return beer.ph<4.0;
 // }))
 // console.log(acidicPH);
+// handleToggle={true}>
+                      {/* onChange={() => handleChange(checkboxId)}
+                      index={checkboxId}   */}

@@ -10,7 +10,8 @@ const App = () => {
   return (
     <div className="app">
         <div className="app__frame">
-           <section className="app__frame-main"> Beer List
+           <section className="app__frame-main">
+            <h1 className="header">Beer List</h1> 
              <Main />
             </section>
             
