@@ -3,7 +3,7 @@ import "./Main.scss"
 import { useState, useEffect } from 'react'
 import beerz from "../../data/beers.js"
 import Nav from '../Nav/Nav'
-// import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import BeerTiles from "../../components/BeerTiles/BeerTiles"
 import NavCheckbox from "../../components/NavCheckbox/NavCheckbox"
 // import BeerInfo from "./components/BeerInfo/BeerInfo";
@@ -35,27 +35,26 @@ const Main = (props) => {
       //   }, [beers]);
        
       const toggleCheckedFilter = (filterId) => {
-           const updatedFilterArr = filterArr.map((filter) => {
+         const updatedFilterArr = filterArr.map((filter) => {
             if (filterId===filter.id){
               return {...filter, checked: !filter.checked}
             }else{
               return {...filter}
             }})
-           updateFilterArr (updatedFilterArr)
+         updateFilterArr (updatedFilterArr)
+          console.log(updateFilterArr)
            }
-    
-         
+          
          const handleInput=(event)=> {
           setSearchTerm(event.target.value.toLowerCase())
         }   
        
-        const filteredArr = beers.filter((beer) =>{
-            if (filterArr[0].checked){
-                 return beer.abv>6.0
-            }
-            })
-       
-       
+        // const filteredArr = beers.filter((beer) =>{
+        //     if (filterArr[0].checked){
+        //          return beer.abv>6.0
+        //     }
+        //     })
+        
       const filteredBeers = beers.filter((beer) =>{
            const beersTitleLower = beer.name.toLowerCase();
            return beersTitleLower.includes(searchTerm)
@@ -70,19 +69,29 @@ const Main = (props) => {
     } 
      
     return (
-      // <Router>
+      <Router>
         <div className="app__frame">
-            <section className="app__frame__nav-side">
-                  <Nav searchTerm={searchTerm} handleInput={handleInput} 
-                    filterArr={filterArr} 
-                    toggleCheckedFilter={toggleCheckedFilter} />
-             </section>
-            {/* <Route  */}
-            <section className="beer-grid">
-                <BeerTiles beerArr={filteredBeers} />
-            </section>
+                <section className="app__frame__nav-side">
+                      <Nav searchTerm={searchTerm} handleInput={handleInput} 
+                        filterArr={filterArr} 
+                        toggleCheckedFilter={toggleCheckedFilter}
+                      />
+                </section>
+          <Routes>  
+            <Route
+                    path="/"
+                    element={
+                    <section >
+                      {/* //removed className="beer-grid"  from section  */}
+                        <BeerTiles beerArr={filteredBeers} />
+                    </section>
+                    }  
+              > 
+              {/* note the closing bracket > for route */}
+            </Route>
+           </Routes>  
         </div>
-      // {/* </Router>   */}
+      </Router>  
     )
   }
 

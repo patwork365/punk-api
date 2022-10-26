@@ -2,6 +2,7 @@ import React from 'react'
 import "./App.scss"
 import Nav from "./containers/Nav/Nav"
 import Main from "./containers/Main/Main"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import { useState } from "react";
 

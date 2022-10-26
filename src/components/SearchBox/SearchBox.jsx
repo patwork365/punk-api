@@ -11,7 +11,7 @@ const SearchBox = (props) => {
   return (
     <form className="search-boxs">
  
-      <input className="search-box" type="text" placeholder="Enter Beer Search Criteria" value={searchTerm} onInput={handleInput}/>
+      <input className="search-box" id="search-box"type="text" placeholder="Enter Beer Search Criteria" value={searchTerm} onInput={handleInput}/>
        
     </form>
   );

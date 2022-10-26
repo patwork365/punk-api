@@ -7,15 +7,10 @@ import "./Nav.scss";
 const Nav = (props) => {
    const { searchTerm, handleInput, toggleCheckedFilter, filterArr } = props; 
 
-
-  console.log(searchTerm);
-
   return (
     <div >
       <SearchBox searchTerm={searchTerm} handleInput={handleInput} />
       <NavCheckbox toggleCheckedFilter={toggleCheckedFilter} filterArr={filterArr}/>
-      
-
     </div>
   );
 };

@@ -2,31 +2,17 @@ import React from 'react'
 import { useState } from 'react';
 import "./NavCheckbox.scss"
 
-// function onChange(id)
-// {
-//   return $("#"+id).next().text();
-  
-// }
-// function handleChange(){
-//    if(value=="No") {
-//       //some function to call here
-//   }else{
-//      //other function to call here
-//   }
-// }
-const NavCheckbox = ({filterArr,toggleCheckedFilter }) => {
 
-    console.log(filterArr[0].checked)
+const NavCheckbox = ({filterArr,toggleCheckedFilter }) => {
+console.log (toggleCheckedFilter)
   return (
             <div className="checkbox"> 
                  <label value="one" className="checkbox__checkbox1">
-                    <input type="checkbox"
-                     checked={filterArr[0].checked}
-                      onChange={(event) => toggleCheckedFilter(filterArr[0].id)}
+                 <input id="checkbox__checkbox1" type="checkbox" checked={filterArr[0].checked} onChange={(event) => toggleCheckedFilter(filterArr[0].id)}
                       /> {filterArr[0].text}
                   </label>
                  <label className="checkbox__checkbox2">
-                 <input type="checkbox"
+                 <input id="checkbox__checkbox2 "type="checkbox"
                      checked={filterArr[1].checked}
                       onChange={(event) => toggleCheckedFilter(filterArr[1].id)}
                       /> {filterArr[1].text}

@@ -9,6 +9,8 @@
 .header{
   text-align: center;
   text-shadow: 3px;
+  font-weight: 500px;
+  font-size: 80px;
   text-decoration: wavy;
 }
 .app__frame-main{
@@ -33,7 +35,7 @@
       }
 &__main{
         font-size:30px;
-        // background-color:green;
+         background-color:green;
         height: 100vh;
         width:max;
         // border: 2px solid black;

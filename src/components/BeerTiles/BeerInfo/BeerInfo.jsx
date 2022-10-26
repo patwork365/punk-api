@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";//its a hook in the package
 const BeerInfo = (props) => {
   const {beerId} =useParams() ; // desconstructing and mapping the hook and has to match on app.jsx to the albumID
   console.log(beerId);
-  const { filteredBeers } = props;
+  const { beerArr } = props;
 
-  const currentAlbum =filteredBeers.find((album)=>beer.id===beerId);
-  console.log(currentAlbum);   
+  // const beerTilesJSXS =beerArr.find((beer)=>beer.id===beerId);
+  // console.log(beerTilesJSXS);   
 //   FIND will return back first object rather than an array, has a callback
 
   return (
